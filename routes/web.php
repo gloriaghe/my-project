@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('guests.home');
-})->name('home');
+// Route::get('/', function () {
+//     return view('guests.home');
+// })->name('home');
 
 Auth::routes();
 
@@ -28,3 +28,8 @@ Route::middleware('auth')
     Route::get('/', 'HomeController@dashboard')->name('dashboard');
     Route::resource('books', 'BookController');
 });
+
+//per gestire le rotte di vue eliminiamo la rotta principale della home in alto e mettiamo questo
+Route::get("{any?}", function(){
+    return view('guests.home');
+   })->where("any", ".*")->name('home');

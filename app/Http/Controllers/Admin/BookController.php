@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
@@ -25,7 +26,7 @@ class BookController extends Controller
     }
     public function create()
     {
-        return view('admin.books.create', compact('books'));
+        return view('admin.books.create');
 
     }
 
@@ -51,16 +52,16 @@ class BookController extends Controller
 
     public function show(Book $book)
     {
-        return view('admin.books.show', compact('books'));
+        return view('admin.books.show', compact('book'));
 
     }
 
 
     public function edit(Book $book)
     {
-        if(Auth::id() != $book->user_id) abort(401);
+        // if(Auth::id() != $book->user_id) abort(401);
 
-        return view('admin.books.edit', compact('books'));
+        return view('admin.books.edit', compact('book'));
 
     }
 
@@ -77,14 +78,14 @@ class BookController extends Controller
         $data = $request->all();
 
         $book->update($data);
-        return redirect()->route('admin.books.show', ['books' => $books]);
+        return redirect()->route('admin.books.show', ['book' => $book]);
 
     }
 
 
     public function destroy(Book $book)
     {
-        if (Auth::id() != $book->user_id) abort(401);
+        // if (Auth::id() != $book->user_id) abort(401);
 
         $book->delete();
 

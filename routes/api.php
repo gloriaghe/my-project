@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/book', 'Api\bookController@index')->name('api.books.index');
+Route::get('/book/random', 'Api\bookController@random')->name('api.books.random');
+Route::get('/book/{book}', 'Api\bookController@show')->name('api.books.show');
