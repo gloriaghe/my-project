@@ -20,7 +20,7 @@ class BookController extends Controller
     public function myIndex()
     {
 
-        $books = Auth::user()->books()->paginate($this->perPage);
+        $books = Auth::user()->book()->paginate($this->perPage);
 
         return view('admin.books.index', compact('books'));
     }
@@ -39,6 +39,7 @@ class BookController extends Controller
             'description'   => 'required_without:image|nullable|string|max:5000',
             'author'   => 'nullable|string|max:100',
         ]);
+
  //con il + aggiungiamo all'array l'Id dell'utente
          $data = $request->all() + [
              'user_id' => Auth::id(),

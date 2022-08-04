@@ -27,6 +27,8 @@ Route::middleware('auth')
 ->group(function () {
     Route::get('/', 'HomeController@dashboard')->name('dashboard');
     Route::resource('books', 'BookController');
+    Route::get('my-books', 'BookController@myIndex')->name('books.myIndex');
+
 });
 
 //per gestire le rotte di vue eliminiamo la rotta principale della home in alto e mettiamo questo

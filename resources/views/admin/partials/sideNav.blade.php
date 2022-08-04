@@ -14,7 +14,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                {{-- <a  class="nav-link ms-4" href="{{route('admin.books.myIndex')}}">- My Books</a> --}}
+                 <a  class="nav-link ms-4" href="{{route('admin.books.myIndex')}}">- My Books</a>
             </li>
             <li class="nav-item">
                 <a  class="nav-link ms-4" href="{{route('admin.books.create')}}">- New Book</a>

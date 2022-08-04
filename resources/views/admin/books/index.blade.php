@@ -9,8 +9,6 @@
             <th>Title</th>
             <th>Author</th>
             <th>Description</th>
-
-
         </tr>
     </thead>
     <tbody>
@@ -23,6 +21,8 @@
                 <td>
                     <a href="{{ route('admin.books.show', ['book' => $book]) }}" class="btn btn-primary">View</a>
                 </td>
+                {{-- @if(Auth::id() == $book->user->user_id) --}}
+
                 <td>
                     <a href="{{ route('admin.books.edit', ['book' => $book]) }}" class="btn btn-warning">Edit</a>
                 </td>
@@ -34,6 +34,8 @@
                         <button class="btn btn-danger"  type="submit">Delete</button>
                     </form>
                 </td>
+                {{-- @endif --}}
+
             </tr>
         @endforeach
     </tbody>

@@ -36,8 +36,9 @@ created(){
     axios.get('/api/book/' + this.book)
     .then(risposta =>
     {
+        console.log(risposta)
         if(risposta.data.success){
-            this.book = risposta.data.result
+            this.book = risposta.data.result;
         } else{
             this.is404 = true;
         }
@@ -60,10 +61,5 @@ border: none;
             border-radius: 20px;
         }
     }
-
-
 }
-
-
-
 </style>

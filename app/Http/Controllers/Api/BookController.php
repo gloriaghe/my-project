@@ -33,7 +33,7 @@ class BookController extends Controller
     //post random homepage
     public function random()
     {
-        $sql = Book::with(['users'])->limit(9)->inRandomOrder();
+        $sql = Book::with(['users'])->limit(12)->inRandomOrder();
         $books = $sql->get();
 
         return response()->json([
@@ -42,14 +42,14 @@ class BookController extends Controller
             'result'    => $books
         ]);
     }
-    public function show(Book $book)
+    public function show(String $book)
     {
-        $book = Book::with(['users'])->first();
+        $bookapi = Book::with(['users'])->where('id', $book)->first();
 
-        if($book) {
+        if($bookapi) {
             return response()->json([
                 'success' => true,
-                'result' =>$book
+                'result' =>$bookapi
             ]);
         } else {
             return response()->json([

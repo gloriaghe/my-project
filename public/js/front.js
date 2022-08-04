@@ -5275,6 +5275,8 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('/api/book/' + this.book).then(function (risposta) {
+      console.log(risposta);
+
       if (risposta.data.success) {
         _this.book = risposta.data.result;
       } else {
